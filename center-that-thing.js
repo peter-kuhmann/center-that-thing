@@ -115,7 +115,7 @@ function _ctt_updateElement(element, options) {
             minX = previousSiblingX + previousSiblingWidth + 1
         }
 
-        let maxX = 0
+        let maxX = Infinity
         if ( nextSibling ) {
             const { x: nextSiblingX } = nextSibling.getBoundingClientRect()
             maxX = nextSiblingX - 1
