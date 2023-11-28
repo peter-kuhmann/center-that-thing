@@ -51,8 +51,7 @@ Assumptions:
 Add the following script to one or every page:
 
 ```html
-
-<script src="https://jsdelivr.net/..."></script>
+<script src="https://cdn.jsdelivr.net/gh/peter-kuhmann/center-that-thing@latest/dist/center-that-thing.js"></script>
 ```
 
 ## Center using JS
