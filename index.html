@@ -12,11 +12,12 @@
         button:hover { background: #38454b; }
         .container { width: 100%; max-width: 70rem; margin-left: auto; margin-right: auto; }
         .flex-row { display: flex; flex-direction: row; align-items: center; }
+        .flex-column { display: flex; flex-direction: column; align-items: center; }
         .centered { background: #1f3e81; color: #ffffff; border-radius: 8px; padding: 0.5em 3em 0.5em 3em; }
         .demo-column { display: flex; flex-direction: column; gap: 32px; }
-        .center-line { width: 2px; height: 100vh; background: rgba(255, 0, 0, 0.3); position: absolute; left: 50%; top: 0; translateX(-50%); z-index: -1; }
+        .center-line { width: 4px; height: 100vh; background: rgba(255, 0, 0, 0.3); position: absolute; left: 50%; top: 0; transform: translateX(-50%); z-index: -1; }
         .demo { transition: max-width 1s ease-out; background: rgba(176, 41, 154, 0.075); }
-        .demo-shortened { max-width: 36rem; }
+        body.shortened-demos .demo { max-width: 36rem; }
         .demo .sibling { background: rgba(102, 183, 210, 0.3); padding: 4px; }
 
         /* You can also activate elements via a CSS variable. */
@@ -28,6 +29,12 @@
 
 <body>
     <div class="center-line"></div>
+
+    <div class="flex-row" style="justify-content: center; margin-bottom: 64px;">
+        <a href="https://github.com/peter-kuhmann/center-that-thing/">
+            <img src="assets/logo.png" alt="Logo of Center That Thing" style="width: auto; height: 7rem;">
+        </a>
+    </div>
 
     <div class="demo-column">
         <div id="demo1" class="demo container flex-row" style="justify-content: space-between;">
@@ -60,14 +67,18 @@
             <div class="sibling">This demo was activated via a CSS variable.</div>
         </div>
 
-        <div class="container" style="margin-top: 64px;">
+        <div class="container flex-column" style="margin-top: 64px; justify-content: center;">
             <div class="flex-row" style="gap: 32px; margin-bottom: 16px;">
                 <button id="toggleCtt">Deactivate centering</button>
                 <button id="toggleWidth">Change simulated width</button>
                 <button id="addDemo">Add new demo dynamically</button>
             </div>
 
-            <div>ℹ️ The red line indicates the screen center!</div>
+            <div style="text-align: center; background: white; padding: 8px;">
+                ℹ️ The red line indicates the screen center!<br><br>
+                🐙 Check out the GitHub repo:<br>
+                <a href="https://github.com/peter-kuhmann/center-that-thing/">https://github.com/peter-kuhmann/center-that-thing/</a>
+            </div>
         </div>
     </div>
 </body>
@@ -92,9 +103,7 @@
     }
 
     document.querySelector("#toggleWidth").onclick = () => {
-        Array.from(document.querySelectorAll(".demo")).forEach(demo => {
-            demo.classList.toggle("demo-shortened")
-        })
+        document.body.classList.toggle("shortened-demos")
     }
 
     let dynamicDemoIdCounter = 0
