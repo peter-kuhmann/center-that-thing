@@ -1,0 +1,22 @@
+name: Minify Library
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  minify-library:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Auto Minify
+        uses: nizarmah/auto-minify@v2.1
+        with:
+          overwrite: true
+          output: dist
+      - name: Committing minified files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Github Action: Minified library"
+          branch: ${{ github.ref }}
