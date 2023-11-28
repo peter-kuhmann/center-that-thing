@@ -17,7 +17,6 @@ jobs:
           output: dist
           js_engine: uglify-js
       - name: Committing minified files
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Github Action: Minified library"
-          branch: ${{ github.ref }}
