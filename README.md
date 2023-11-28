@@ -6,7 +6,7 @@
 
 Centers any HTML element horizontally – **relative to the screen!**
 
-Try out the demo: [Center That Thing Demo 🔗](https://center-that-thing.vercel.app/)
+Try out the demo: [Show. Me. THE. DEMO!!! 🔗](https://center-that-thing.vercel.app/)
 
 Who is this favor?
 
