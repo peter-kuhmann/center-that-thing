@@ -14,6 +14,9 @@ Who is this favor?
 - For you, my dear **developer colleagues**. ❤️ Don't be afraid to implement this annoying centered thing anymore. Just
   use this library.
 
+⬇️ Check out this lovely GIF:
+<img src="assets/meme.gif" alt="A meme GIF about a harsh discussion between a designer and a developer about centering elements." width="600">
+
 # 📖 Table of contents
 
 <!-- TOC -->
