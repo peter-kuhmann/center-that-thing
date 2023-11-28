@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Center That Thing</title>
+    <script src="center-that-thing.js"></script>
+    <style>
+        html { margin: 0; padding: 0; font-size: 16px; font-family: sans-serif; }
+        body { margin: 0; padding: 32px; }
+        * { box-sizing: border-box; }
+        button { font-size: 1rem; background: #1f2426; color: white; padding: 0.5rem 3rem 0.5rem 3rem; border: none; border-radius: 8px; cursor: pointer; }
+        button:hover { background: #38454b; }
+        .container { width: 100%; max-width: 70rem; margin-left: auto; margin-right: auto; }
+        .flex-row { display: flex; flex-direction: row; align-items: center; }
+        .centered { background: #1f3e81; color: #ffffff; border-radius: 8px; padding: 0.5em 3em 0.5em 3em; }
+        .demo-column { display: flex; flex-direction: column; gap: 32px; }
+        .center-line { width: 2px; height: 100vh; background: rgba(255, 0, 0, 0.3); position: absolute; left: 50%; top: 0; translateX(-50%); }
+        .demo { transition: max-width 1s ease-out; }
+        .demo-shortened { max-width: 36rem; }
+        .demo .sibling { background: rgba(102, 183, 210, 0.3); padding: 4px; }
+
+        /* You can also activate elements via a CSS variable. */
+        :root {
+            --center-that-thing: '[{ "selector": "#demo4 .centered", "collisionDetection": "siblings"}, { "selector": "#demo5 .centered", "collisionDetection": "siblings"}]';
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center-line"></div>
+
+    <div class="demo-column">
+        <div id="demo1" class="demo container flex-row" style="justify-content: space-between;">
+            <div class="sibling">Left</div>
+            <div class="centered" data-ctt-enable="true">Demo 1</div>
+            <div class="sibling">This demo has no collision detection applied.</div>
+        </div>
+
+        <div id="demo2" class="demo container flex-row" style="justify-content: space-between;">
+            <div class="sibling">This demo has "siblings" collision detection.</div>
+            <div class="centered" data-ctt-enable="true" data-ctt-collision-detection="siblings">Demo 2</div>
+            <div class="sibling">Right</div>
+        </div>
+
+        <div id="demo3" class="demo container flex-row" style="justify-content: space-between;">
+            <div class="sibling">Left</div>
+            <div class="centered" data-ctt-enable="true" data-ctt-collision-detection="siblings">Demo 3</div>
+            <div class="sibling">This demo has "siblings" collision detection.</div>
+        </div>
+
+        <div id="demo4" class="demo container flex-row" style="justify-content: space-between;">
+            <div class="sibling">This demo was activated via a CSS variable.</div>
+            <div class="centered">Demo 4</div>
+            <div class="sibling">Right</div>
+        </div>
+
+        <div id="demo5" class="demo container flex-row" style="justify-content: space-between;">
+            <div class="sibling">Left</div>
+            <div class="centered">Demo 5</div>
+            <div class="sibling">This demo was activated via a CSS variable.</div>
+        </div>
+
+        <div class="container">
+            <div style="margin-bottom: 16px;">
+                <button id="toggleCtt">Toggle centerThatThing</button>
+                <button id="toggleWidth">Change simulated width</button>
+                <button id="addDemo">Add new demo dynamically</button>
+            </div>
+
+            <div>ℹ️ The red line indicates the screen center!</div>
+        </div>
+    </div>
+</body>
+
+<script>
+    enableCenterThatThingDynamicDiscovery()
+
+    let previousElementsAndOptions = null
+    let active = true
+
+    document.querySelector("#toggleCtt").onclick = () => {
+        if ( active ) {
+            previousElementsAndOptions = getCenterThatThingElementsAndOptions()
+            previousElementsAndOptions.forEach(({element}) => uncenterThatThing(element))
+        } else {
+            previousElementsAndOptions.forEach(({element, options}) => centerThatThing(element, options))
+        }
+        active = !active
+    }
+
+    document.querySelector("#toggleWidth").onclick = () => {
+        Array.from(document.querySelectorAll(".demo")).forEach(demo => {
+            demo.classList.toggle("demo-shortened")
+        })
+    }
+
+    let dynamicDemoIdCounter = 0
+    document.querySelector("#addDemo").onclick = () => {
+        const container = document.createElement("div")
+        container.id = `demo-dynamic-${dynamicDemoIdCounter++}`
+        container.classList.add("demo", "container", "flex-row")
+        container.style.justifyContent = "space-between"
+
+        const left = document.createElement("div")
+        left.classList.add("sibling")
+        left.innerText = "LEFT"
+
+        const centered = document.createElement("div")
+        centered.classList.add("centered")
+        centered.innerText = `Dynamic ${dynamicDemoIdCounter}`
+        centered.dataset.cttEnable = "true"
+        centered.dataset.cttCollisionDetection = "siblings"
+
+        const right = document.createElement("div")
+        right.classList.add("sibling")
+        right.innerText = "RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT"
+
+        container.append(left, centered, right)
+
+        const demos = Array.from(document.querySelectorAll(".demo"))
+        if ( demos.length > 0 ) {
+            const firstDemo = demos[0]
+            firstDemo.parentElement.insertBefore(container, firstDemo)
+        }
+
+        // Thanks to our call to "enableCenterThatThingDynamicDiscovery" and the data-ctt-enable flag,
+        // the library will center the new element automatically.
+
+        // Alternative: call -> centerThatThing(centered, { collisionDetection: "siblings" })
+    }
+</script>
+
+</html>
