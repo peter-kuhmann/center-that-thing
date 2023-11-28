@@ -173,7 +173,8 @@ function _ctt_autoDiscovery() {
 
     // Find elements via CSS variable on :root
     let cttCssElements = (getComputedStyle(document.documentElement)
-        .getPropertyValue('--center-that-thing') ?? '').trim();
+        .getPropertyValue('--center-that-thing') ?? '').trim()
+        .replaceAll("\\\"", "\""); // safari fix
     if ( cttCssElements.startsWith("\"") || cttCssElements.startsWith("'") ) {
         cttCssElements = cttCssElements.substring(1, cttCssElements.length-1)
     }
@@ -184,7 +185,7 @@ function _ctt_autoDiscovery() {
         try {
             elementsSpecificiations = JSON.parse(cttCssElements)
         } catch (e) {
-            throw new Error("Could not parse '--center-that-thing' CSS variable. Must be a JSON array.")
+            throw new Error(`Could not parse '--center-that-thing' CSS variable: ${e.msg ?? e}`)
         }
 
         if ( !Array.isArray(elementsSpecificiations) ) {
