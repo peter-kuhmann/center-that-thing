@@ -18,6 +18,7 @@ jobs:
         uses: nizarmah/auto-minify@v2.1
         with:
           overwrite: true
+          directory: src
           output: dist
           js_engine: uglify-js
       - name: Committing minified files
