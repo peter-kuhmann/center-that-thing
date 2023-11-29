@@ -21,7 +21,7 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
       - name: Building dist/
-        run: pnpm build
+        run: pnpm create-library-dist
       - name: Committing minified files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "mkdir -p dist && cp src/center-that-thing.js dist/ && uglifyjs -c -m -o dist/center-that-thing.min.js src/center-that-thing.js"
+    "create-library-dist": "mkdir -p dist && cp src/center-that-thing.js dist/ && uglifyjs -c -m -o dist/center-that-thing.min.js src/center-that-thing.js"
   },
   "keywords": [],
   "author": "",
