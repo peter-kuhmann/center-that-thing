@@ -1,15 +1,17 @@
 {
   "name": "center-that-thing",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cp src/center-that-thing.js dist && uglifyjs -c -m -o dist/center-that-thing.min.js src/center-that-thing.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@vercel/edge": "^1.1.1"
+    "@vercel/edge": "^1.1.1",
+    "uglify-js": "^3.17.4"
   }
 }

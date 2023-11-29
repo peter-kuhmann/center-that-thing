@@ -1,4 +1,4 @@
-name: Minify Library
+name: Build Dist
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  minify-library:
+  build-dist:
     runs-on: ubuntu-latest
 
     permissions:
@@ -14,13 +14,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Auto Minify
-        uses: nizarmah/auto-minify@v2.1
+      - uses: pnpm/action-setup@v2
         with:
-          overwrite: true
-          directory: src
-          output: dist
-          js_engine: uglify-js
+          version: 8
+      - name: Building dist/
+        run: pnpm build
       - name: Committing minified files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:

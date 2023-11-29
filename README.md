@@ -2,7 +2,7 @@
     <a href="https://center-that-thing.vercel.app/"><img src="assets/logo.png" width="500"></a>
 </p>
 
-# 🫸 Center. That. Thing! 🫷
+# ➡️ Center. That. Thing! ⬅️
 
 Centers any HTML element horizontally – **relative to the screen!**
 
@@ -21,26 +21,23 @@ Who is this favor?
 # 📖 Table of contents
 
 <!-- TOC -->
-
-* [🫸 Center. That. Thing! 🫷](#-center-that-thing-)
+* [➡️ Center. That. Thing! ⬅️](#-center-that-thing-)
 * [📖 Table of contents](#-table-of-contents)
 * [🧑‍💻 Usage](#-usage)
-    * [Add the script](#add-the-script)
-    * [Center using JS](#center-using-js)
-    * [Center using HTML attributes](#center-using-html-attributes)
-    * [Center using CSS (yes!)](#center-using-css-yes)
-    * [Dynamic elements](#dynamic-elements)
+  * [Add the script](#add-the-script)
+  * [Center using JS](#center-using-js)
+  * [Center using HTML attributes](#center-using-html-attributes)
+  * [Center using CSS (yes!)](#center-using-css-yes)
+  * [Dynamic elements](#dynamic-elements)
 * [🛠️ Options](#-options)
 * [🛟 The problem](#-the-problem)
 * [💡 How it works](#-how-it-works)
 * [💥 Collision detection](#-collision-detection)
 * [⛔️ Issues](#-issues)
 * [✍️ Author](#-author)
-
 <!-- TOC -->
 
 # 🧑‍💻 Usage
-
 Assumptions:
 
 - You are able to add a JavaScript library to your website's/project's `<head>`.
@@ -55,7 +52,7 @@ Assumptions:
 Add the following script to one or every page:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/peter-kuhmann/center-that-thing@latest/dist/center-that-thing.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/peter-kuhmann/center-that-thing@1.0.2/dist/center-that-thing.min.js"></script>
 ```
 
 ## Center using JS
