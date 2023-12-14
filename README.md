@@ -34,7 +34,7 @@ Who is this favor?
 * [🛟 The problem](#-the-problem)
 * [💡 How it works](#-how-it-works)
 * [💥 Collision detection](#-collision-detection)
-* [Can't I just use modern CSS?](#cant-i-just-use-modern-css)
+* [😖 Can't I just use modern CSS?](#-cant-i-just-use-modern-css)
 * [⛔️ Issues](#-issues)
 * [✍️ Author](#-author)
 <!-- TOC -->
