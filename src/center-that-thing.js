@@ -105,6 +105,8 @@ function _ctt_updateElement(element, options) {
     // Collision detection: "siblings" strategy.
     // We get the previous and next sibling and use them as limiting element for
     // X-axis translation/offset.
+    let collisionDetected = false;
+
     if ( options.collisionDetection === "siblings" ) {
         const previousSibling = element.previousElementSibling
         const nextSibling = element.nextElementSibling
@@ -123,8 +125,10 @@ function _ctt_updateElement(element, options) {
 
         if ( newPosition < minX ) {
             offsetX += minX - newPosition
+            collisionDetected = true
         } else if ( newPosition + elementWidth > maxX ) {
             offsetX = maxX - elementWidth - realElementX
+            collisionDetected = true
         }
     }
 
@@ -137,6 +141,13 @@ function _ctt_updateElement(element, options) {
     element._ctt_offsetX = offsetX
 
     element.style.left = `${offsetX}px`
+
+    const parentElement = element.parentElement
+    if ( parentElement ) {
+        parentElement.classList.toggle("ctt-collision-detected", collisionDetected)
+        if ( collisionDetected ) parentElement.dataset.cttCollisionDetected = "true"
+        else if ( collisionDetected ) parentElement.dataset.cttCollisionDetected = undefined
+    }
 }
 
 // INTERNAL

@@ -20,9 +20,14 @@
         body.shortened-demos .demo { max-width: 36rem; }
         .demo .sibling { background: rgba(102, 183, 210, 0.3); padding: 4px; }
 
+        .demo.ctt-collision-detected .sibling:has(.hide-on-collision) { position: relative; }
+        .demo.ctt-collision-detected .sibling .hide-on-collision { opacity: 0; }
+        .demo .sibling .show-on-collision { display: none; }
+        .demo.ctt-collision-detected .sibling .show-on-collision { display: block; position: absolute; top: 50%; transform: translateY(-50%); right: 0; }
+
         /* You can also activate elements via a CSS variable. */
         :root {
-            --center-that-thing: '[{ "selector": "#demo4 .centered", "collisionDetection": "siblings"}, { "selector": "#demo5 .centered", "collisionDetection": "siblings"}]';
+            --center-that-thing: '[{ "selector": "#demo5 .centered", "collisionDetection": "siblings"}, { "selector": "#demo6 .centered", "collisionDetection": "siblings"}]';
         }
     </style>
 </head>
@@ -44,26 +49,35 @@
         </div>
 
         <div id="demo2" class="demo container flex-row" style="justify-content: space-between;">
-            <div class="sibling">This demo has "siblings" collision detection.</div>
+            <div class="sibling">Left</div>
             <div class="centered" data-ctt-enable="true" data-ctt-collision-detection="siblings">Demo 2</div>
-            <div class="sibling">Right</div>
+            <div class="sibling">
+                <div class="hide-on-collision">Collision detection plus other element on collision.</div>
+                <div class="show-on-collision">Shorter text.</div>
+            </div>
         </div>
 
         <div id="demo3" class="demo container flex-row" style="justify-content: space-between;">
-            <div class="sibling">Left</div>
-            <div class="centered" data-ctt-enable="true" data-ctt-collision-detection="siblings">Demo 3</div>
             <div class="sibling">This demo has "siblings" collision detection.</div>
-        </div>
-
-        <div id="demo4" class="demo container flex-row" style="justify-content: space-between;">
-            <div class="sibling">This demo was activated via a CSS variable.</div>
-            <div class="centered">Demo 4</div>
+            <div class="centered" data-ctt-enable="true" data-ctt-collision-detection="siblings">Demo 3</div>
             <div class="sibling">Right</div>
         </div>
 
-        <div id="demo5" class="demo container flex-row" style="justify-content: space-between;">
+        <div id="demo4" class="demo container flex-row" style="justify-content: space-between;">
             <div class="sibling">Left</div>
+            <div class="centered" data-ctt-enable="true" data-ctt-collision-detection="siblings">Demo 4</div>
+            <div class="sibling">This demo has "siblings" collision detection.</div>
+        </div>
+
+        <div id="demo5" class="demo container flex-row" style="justify-content: space-between;">
+            <div class="sibling">This demo was activated via a CSS variable.</div>
             <div class="centered">Demo 5</div>
+            <div class="sibling">Right</div>
+        </div>
+
+        <div id="demo6" class="demo container flex-row" style="justify-content: space-between;">
+            <div class="sibling">Left</div>
+            <div class="centered">Demo 6</div>
             <div class="sibling">This demo was activated via a CSS variable.</div>
         </div>
 
