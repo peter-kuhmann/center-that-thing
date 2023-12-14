@@ -157,7 +157,7 @@ Currently, it supports:
 
 **Check out the demo, to understand better!**
 
-# Can't I just use modern CSS?
+# 😖 Can't I just use modern CSS?
 Yes, you can. In many cases. **But in some, not.**
 
 **There are generally two CSS solutions:**
