@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparison to CSS – Center That Thing</title>
+    <script src="src/center-that-thing.js"></script>
+    <link rel="stylesheet" href="ctt-base.css">
+    <script>enableCenterThatThingDynamicDiscovery()</script>
+</head>
+
+<body>
+    <div class="center-line"></div>
+
+    <div class="flex-column" style="justify-content: center; margin-bottom: 64px;">
+        <h1>CSS Comparison</h1>
+        <a href="/index.html">Back to home page →</a>
+    </div>
+
+    <div class="demo-column">
+        <div class="container">
+            <h2>With <u>flex</u>: Works for <u>three elements</u> ✅</h2>
+            <div id="demo-flex-three-elements" class="demo flex-row">
+                <div class="sibling" style="flex: 1;">Left</div>
+                <div class="centered">Demo 1</div>
+                <div class="sibling" style="flex: 1; text-align: right;">This demo has no collision detection applied.</div>
+            </div>
+            <p>By using <code>flex: 1;</code> we can make the siblings the same width. This causes the center element to be sandwiched exactly in the middle.</p>
+            <p>Downside: The siblings take up the remaining space and are of the same width. The right element can't grow on smaller screens. With CTT, this would not be a problem.</p>
+            <p>Second downside: It does not work with containers that are not in the center.</p>
+        </div>
+
+        <div class="container">
+            <h2>With <u>flex</u>: Does not work for <u>two elements</u> ❌</h2>
+            <div id="demo-flex-two-elements" class="demo flex-row" style="justify-content: space-evenly;">
+                <div class="centered">Demo 1</div>
+                <div class="sibling">This demo has no collision detection applied.</div>
+            </div>
+            <p>Yes, we could add an empty dummy element again on the left side. But this would prevent the right sibling to grow.</p>
+        </div>
+
+        <div style="max-width: 90%;">
+            <h2>With <u>flex</u>: Does not work for <u>non-centered wrapper</u> ❌</h2>
+            <div id="demo-flex-non-centered-container" class="demo flex-row">
+                <div class="sibling" style="flex: 1;">Left</div>
+                <div class="centered">Demo 1</div>
+                <div class="sibling" style="flex: 1; text-align: right;">This demo has no collision detection applied.</div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>With <u>grid</u>: Works for <u>three elements</u> ✅</h2>
+            <div id="demo-gird-three-elements" class="demo" style="display: grid; grid-template-columns: 1fr auto 1fr;">
+                <div class="sibling">Left</div>
+                <div class="centered">Demo 1</div>
+                <div class="sibling" style="text-align: right;">This demo has no collision detection applied.</div>
+            </div>
+            <p>We use <code>grid-template-columns: 1fr auto 1fr;</code> to make the siblings the same width and also sandwich the center element in the middle.</p>
+            <p>Downside: The siblings take up the remaining space and are of the same width. The right element can't grow on smaller screens. With CTT, this would not be a problem.</p>
+            <p>Second downside: It does not work with containers that are not in the center.</p>
+        </div>
+
+        <div class="container">
+            <h2>With <u>grid</u>: Does not work for two elements ❌</h2>
+            <div id="demo-grid-two-elements" class="demo" style="display: grid; grid-template-columns: 1fr auto 1fr;">
+                <div class="centered">Demo 1</div>
+                <div class="sibling">This demo has no collision detection applied.</div>
+            </div>
+        </div>
+
+        <div style="max-width: 90%;">
+            <h2>With <u>grid</u>: Does not work for <u>non-centered container</u> ❌</h2>
+            <div id="demo-gird-non-centered-container" class="demo" style="display: grid; grid-template-columns: 1fr auto 1fr;">
+                <div class="sibling">Left</div>
+                <div class="centered">Demo 1</div>
+                <div class="sibling" style="text-align: right;">This demo has no collision detection applied.</div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>With <u>CTT</u>: Works for <u>three elements</u> ✅</h2>
+            <div id="demo-ctt-three-elements" class="demo flex-row" style="justify-content: space-between;">
+                <div class="sibling">Left</div>
+                <div class="centered" data-ctt-enable="true" data-ctt-collision-detection="siblings">Demo 1</div>
+                <div class="sibling">This demo has no collision detection applied.</div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>With <u>CTT</u>: Works for <u>two elements</u> ✅</h2>
+            <div id="demo-ctt-two-elements" class="demo flex-row" style="justify-content: space-between;">
+                <div class="centered" data-ctt-enable="true" data-ctt-collision-detection="siblings">Demo 1</div>
+                <div class="sibling">This demo has no collision detection applied.</div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>With <u>CTT</u>: Works for <u>four elements</u> ✅</h2>
+            <div id="demo-ctt-four-elements" class="demo flex-row" style="justify-content: space-between;">
+                <div class="sibling">Left 1</div>
+                <div class="sibling">Left 2</div>
+                <div class="centered" data-ctt-enable="true" data-ctt-collision-detection="siblings">Demo 1</div>
+                <div class="sibling">This demo has no collision detection applied.</div>
+            </div>
+        </div>
+
+        <div style="max-width: 90%;">
+            <h2>With <u>CTT</u>: Works also for <u>non-centered containers</u> ✅</h2>
+            <div id="demo-ctt-non-centered-container" class="demo flex-row" style="justify-content: space-between;">
+                <div class="sibling">Left 1</div>
+                <div class="sibling">Left 2</div>
+                <div class="centered" data-ctt-enable="true" data-ctt-collision-detection="siblings">Demo 1</div>
+                <div class="sibling">This demo has no collision detection applied.</div>
+            </div>
+        </div>
+
+        <div class="container flex-column" style="margin-top: 64px; justify-content: center;">
+            <div style="text-align: center; background: white; padding: 8px;">
+                ℹ️ The red line indicates the screen center!<br><br>
+                <a href="/index.html">Back to home page →</a><br><br>
+                🐙 Check out the GitHub repo:<br>
+                <a href="https://github.com/peter-kuhmann/center-that-thing/">https://github.com/peter-kuhmann/center-that-thing/</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

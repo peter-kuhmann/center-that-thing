@@ -7,6 +7,7 @@
 Centers any HTML element horizontally – **relative to the screen!**
 
 Try out the demo: [Show. Me. THE. DEMO!!! 🔗](https://center-that-thing.vercel.app/)
+Check out also the CSS comparison demo: [CSS vs. CTT Comparison](https://center-that-thing.vercel.app/css-comparison.html)
 
 Who is this favor?
 
@@ -26,13 +27,14 @@ Who is this favor?
 * [🧑‍💻 Usage](#-usage)
   * [Add the script](#add-the-script)
   * [Center using JS](#center-using-js)
-  * [Center using HTML attributes](#center-using-html-attributes)
-  * [Center using CSS (yes!)](#center-using-css-yes)
+  * [Center with CTT using HTML attributes](#center-with-ctt-using-html-attributes)
+  * [Center with CTT using CSS variables (yes!)](#center-with-ctt-using-css-variables-yes)
   * [Dynamic elements](#dynamic-elements)
 * [🛠️ Options](#-options)
 * [🛟 The problem](#-the-problem)
 * [💡 How it works](#-how-it-works)
 * [💥 Collision detection](#-collision-detection)
+* [Can't I just use modern CSS?](#cant-i-just-use-modern-css)
 * [⛔️ Issues](#-issues)
 * [✍️ Author](#-author)
 <!-- TOC -->
@@ -69,7 +71,7 @@ centerThatThing("nav > .logo", { /* options */})
 
 **The `<script>` block must come ofter the element!**
 
-## Center using HTML attributes
+## Center with CTT using HTML attributes
 
 Add the attribute `data-ctt-enable="true"` to the element you want to center.
 
@@ -82,7 +84,7 @@ Add the attribute `data-ctt-enable="true"` to the element you want to center.
 </div>
 ```
 
-## Center using CSS (yes!)
+## Center with CTT using CSS variables (yes!)
 
 Add a CSS variable to your global CSS:
 
@@ -154,6 +156,25 @@ Currently, it supports:
 - siblings/neighbour checks (`"siblings"`)
 
 **Check out the demo, to understand better!**
+
+# Can't I just use modern CSS?
+Yes, you can. In many cases. **But in some, not.**
+
+**There are generally two CSS solutions:**
+- Flex layout with the sibling elements using `flex: 1;` to we of equal width. This causes the center element to be sandwiched exactly in the middle.
+- Grid layout with `grid-template-columns: 1fr auto 1fr;`. Same principle as with the flex layout: Center element will be sandwiched.
+
+**When does that work?**
+1. The container is centered.
+2. You have three (or an odd number) of elements.
+3. It's okay for you, if both siblings are of equal width.
+
+**When is this not a good idea?**
+- You want the sibling elements to have different widths that use available space and the centered element should move.
+- You have two elements respectively an even number of elements.
+- The container is NOT centered.
+
+Check out the CSS vs. CTT comparison: [CSS vs. CTT Comparison](https://center-that-thing.vercel.app/css-comparison.html)
 
 # ⛔️ Issues
 

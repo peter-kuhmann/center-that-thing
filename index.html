@@ -4,27 +4,8 @@
     <meta charset="UTF-8">
     <title>Center That Thing</title>
     <script src="src/center-that-thing.js"></script>
-    <style>
-        html { margin: 0; padding: 0; font-size: 16px; font-family: sans-serif; }
-        body { margin: 0; padding: 32px; }
-        * { box-sizing: border-box; }
-        button { font-size: 1rem; background: #1f2426; color: white; padding: 0.5rem 3rem 0.5rem 3rem; border: none; border-radius: 8px; cursor: pointer; }
-        button:hover { background: #38454b; }
-        .container { width: 100%; max-width: 70rem; margin-left: auto; margin-right: auto; }
-        .flex-row { display: flex; flex-direction: row; align-items: center; }
-        .flex-column { display: flex; flex-direction: column; align-items: center; }
-        .centered { background: #1f3e81; color: #ffffff; border-radius: 8px; padding: 0.5em 3em 0.5em 3em; }
-        .demo-column { display: flex; flex-direction: column; gap: 32px; }
-        .center-line { width: 4px; height: 100vh; background: rgba(255, 0, 0, 0.3); position: absolute; left: 50%; top: 0; transform: translateX(-50%); z-index: -1; }
-        .demo { transition: max-width 1s ease-out; background: rgba(176, 41, 154, 0.075); }
-        body.shortened-demos .demo { max-width: 36rem; }
-        .demo .sibling { background: rgba(102, 183, 210, 0.3); padding: 4px; }
-
-        /* You can also activate elements via a CSS variable. */
-        :root {
-            --center-that-thing: '[{ "selector": "#demo4 .centered", "collisionDetection": "siblings"}, { "selector": "#demo5 .centered", "collisionDetection": "siblings"}]';
-        }
-    </style>
+    <link rel="stylesheet" href="ctt-base.css">
+    <script>enableCenterThatThingDynamicDiscovery()</script>
 </head>
 
 <body>
@@ -76,6 +57,9 @@
 
             <div style="text-align: center; background: white; padding: 8px;">
                 ℹ️ The red line indicates the screen center!<br><br>
+
+                <a href="/css-comparison.html">Can't I do that with CSS only?!!! Check this out →</a><br><br>
+
                 🐙 Check out the GitHub repo:<br>
                 <a href="https://github.com/peter-kuhmann/center-that-thing/">https://github.com/peter-kuhmann/center-that-thing/</a>
             </div>
@@ -84,8 +68,6 @@
 </body>
 
 <script>
-    enableCenterThatThingDynamicDiscovery()
-
     let previousElementsAndOptions = null
     let active = true
     const toggleButton = document.querySelector("#toggleCtt")
